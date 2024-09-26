@@ -1,13 +1,15 @@
-const { userCollections } = require("../db/dbConfiger");
+const { getUserCollection } = require("../db/dbConfiger");
 
 
 const register = async(req, res)=>{
     console.log(req.body)
     try{
-      const findEmail = (await userCollections).findOne({email : req.body.email});
+      const userCollections = getUserCollection().userCollections
+      const findEmail = await userCollections.findOne({email : req.body.email});
       const matchemail = await findEmail
+      
       if(!matchemail){
-        const result = (await userCollections).insertOne(req.body)
+        const result = await userCollections.insertOne(req.body)
         return res.send({message: 'Successfully Register',result})
       }else{          
         return res.send({message : 'You Cannot Register This Email'})
