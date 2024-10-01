@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const logins  = require('./Controler/login.control');
 const  register  = require('./Controler/register.control');
-const { connectDB } = require('./db/dbConfiger');
+const dbConneced = require('./model/dbConfiger');
 require('dotenv').config();
 const app = express();
 
@@ -18,7 +18,7 @@ app.post('/login', logins)
 
 
 
-app.listen(5000, ()=>{
+app.listen(5000, async()=>{
     console.log('super econrce start')
-    connectDB()
+    await dbConneced()
 })
