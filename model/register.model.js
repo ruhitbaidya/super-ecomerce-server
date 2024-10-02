@@ -42,7 +42,13 @@ const registerSchema = new mongoose.Schema({
     acActive : {
         type : Boolean,
         required : true
+    },
+    
+    role : {
+        type : String,
+        required : true
     }
+    
 }, {timestamps : true})
 
 

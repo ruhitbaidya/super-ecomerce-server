@@ -1,4 +1,5 @@
 const registerModel = require("../model/register.model")
+const tokenGenarate = require("../tokengen/tokenGenerate")
 
 const login = async(req, res)=>{
     try{
@@ -7,7 +8,8 @@ const login = async(req, res)=>{
       console.log(findUser)
       if(findUser){
         if(findUser.password === password){
-          res.send({message : "Successfully Login"})
+          const tokenGen = tokenGenarate(findUser.email)
+          res.send({message : "Successfully Login", token : tokenGen})
         }else{
           res.send({message : "Authantaction Failed!"})
         }
