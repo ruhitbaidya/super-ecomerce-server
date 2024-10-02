@@ -1,9 +1,6 @@
 const registerModel = require("../model/register.model")
 
-
-
 const login = async(req, res)=>{
-    console.log(req.body)
     try{
       const {email, password} = req.body
       const findUser = await registerModel.findOne({email})
