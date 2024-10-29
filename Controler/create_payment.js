@@ -39,7 +39,7 @@ const create_payment = async(req, res)=>{
         // Redirect the user to payment gateway
         let GatewayPageURL = apiResponse.GatewayPageURL
         res.send(GatewayPageURL)
-        console.log('Redirecting to: ', GatewayPageURL)
+      
     });
 }
 
